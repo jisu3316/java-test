@@ -1,43 +1,25 @@
 package me.jisu.javatest;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.condition.*;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
 
     @Test
-    @DisplayName("스터디 만들기 ╯°□°）╯")
-    @EnabledIfEnvironmentVariable(named = "TEST_ENV", matches = "LOCAL")
+    @DisplayName("스터디 만들기 ╯°□°）╯ fast")
+    @Tag("fast")
     void create_new_study() {
-        String test_env = System.getenv("TEST_ENV");
-        System.out.println("test_env = " + test_env);
-        Assumptions.assumeTrue("LOCAL".equalsIgnoreCase(test_env));
-
-        Assumptions.assumingThat("LOCAL".equalsIgnoreCase(test_env), () -> {
-            System.out.println("loccal");
-            Study actual = new Study(10);
-            assertEquals(actual.getLimit(), 10);
-        });
-
-        Assumptions.assumingThat("TEST".equalsIgnoreCase(test_env), () -> {
-            System.out.println("test");
-            Study actual = new Study(10);
-            assertEquals(actual.getLimit(), 10);
-        });
-
-        System.out.println("loccal");
         Study actual = new Study(10);
         assertEquals(actual.getLimit(), 10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
     }
 
-    @DisplayName("스터디 만들기 \uD83D\uDe31")
+    @DisplayName("스터디 만들기 \uD83D\uDe31 slow")
     @Test
-    @EnabledIfEnvironmentVariable(named = "TEST_ENV", matches = "local")
+    @Tag("slow")
     void create_new_study_again() {
         System.out.println("create1");
     }
