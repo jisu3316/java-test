@@ -8,18 +8,18 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
 
+    @FastTest
     @Test
     @DisplayName("스터디 만들기 ╯°□°）╯ fast")
-    @Tag("fast")
     void create_new_study() {
         Study actual = new Study(10);
         assertEquals(actual.getLimit(), 10);
         assertThat(actual.getLimit()).isGreaterThan(0);
     }
 
+    @SlowTest
     @DisplayName("스터디 만들기 \uD83D\uDe31 slow")
     @Test
-    @Tag("slow")
     void create_new_study_again() {
         System.out.println("create1");
     }
