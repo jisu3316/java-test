@@ -1,6 +1,8 @@
 package me.jisu.javatest;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
@@ -23,6 +25,22 @@ class StudyTest {
     void create_new_study_again() {
         System.out.println("create1");
     }
+
+    @DisplayName("테스트 반복")
+    @RepeatedTest(value = 10, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
+    void repeatTest(RepetitionInfo repetitionInfo) {
+        System.out.println("test" + repetitionInfo.getCurrentRepetition() + "/"+
+                repetitionInfo.getTotalRepetitions());
+    }
+
+    @DisplayName("테스트 파라미너 넣기")
+    @ParameterizedTest(name = "{index} {displayName} message={0}")
+    @ValueSource(strings = {"날씨가", "많이", "더워지고", "있네요."})
+    void parameterizeTest(String message) {
+        System.out.println(message);
+    }
+
+
 
     /**
      *@BeforeAll  : 전체 테스트가 실행 되기 전
