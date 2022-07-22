@@ -16,12 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class StudyTest {
+
+    int value = 1;
 
     @FastTest
     @Test
     @DisplayName("스터디 만들기 ╯°□°）╯ fast")
     void create_new_study() {
+        System.out.println(this);
+        System.out.println(value++);
         Study actual = new Study(10);
         assertEquals(actual.getLimit(), 10);
         assertThat(actual.getLimit()).isGreaterThan(0);
@@ -31,6 +36,8 @@ class StudyTest {
     @DisplayName("스터디 만들기 \uD83D\uDe31 slow")
     @Test
     void create_new_study_again() {
+        System.out.println(this);
+        System.out.println(value++);
         System.out.println("create1");
     }
 
