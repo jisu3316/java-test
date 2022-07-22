@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudyTest {
 
@@ -38,6 +37,7 @@ class StudyTest {
     @SlowTest
     @DisplayName("스터디 만들기 \uD83D\uDe31 slow")
     @Test
+    @Disabled
     void create_new_study_again() {
         System.out.println(this);
         System.out.println(value++);
