@@ -15,6 +15,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine'
+
 }
 
 tasks.named('test') {
