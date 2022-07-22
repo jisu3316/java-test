@@ -17,10 +17,12 @@ import static org.assertj.core.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudyTest {
 
     int value = 1;
 
+    @Order(2)
     @FastTest
     @Test
     @DisplayName("스터디 만들기 ╯°□°）╯ fast")
@@ -32,6 +34,7 @@ class StudyTest {
         assertThat(actual.getLimit()).isGreaterThan(0);
     }
 
+    @Order(1)
     @SlowTest
     @DisplayName("스터디 만들기 \uD83D\uDe31 slow")
     @Test
